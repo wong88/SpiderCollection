@@ -79,7 +79,7 @@ def download():
 def reserve(bk_url,bk_title,bk_category,bk_nickname,bk_views,bk_createdat):
     """url处理"""
     # 连接数据库
-    conn = connect(host='localhost', port=3306, user='root', password='mysql', database='csdn', charset='utf8')
+    conn = connect(host='', port=3306, user='', password='', database='', charset='utf8')
     # 添加游标对象
     cs = conn.cursor()
     # 添加数据
