@@ -7,7 +7,7 @@ nndl = dict()
 
 def main(url, headers):
     q = 1
-    conn = connect(host='localhost', port=3306, database='ipport', user='root', password='mysql', charset='utf8')
+    conn = connect(host='localhost', port=3306, database='', user='', password='', charset='utf8')
     db = conn.cursor()
     html = requests.get(url=url, headers=headers).content.decode('utf-8')
     temp = re.findall(r'<td>(\d+\.\d+\.\d+\.\d+)</td>\s+<td>(\d+)</td>', html)
