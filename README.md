@@ -1,2 +1,8 @@
 # My-Python-爬虫
-my My own small program for Python
+爬虫合集
+1.csdn文章
+2.拉勾网职位信息
+3.西刺代理ip
+4.豆瓣电影top250
+5.链家网房屋信息
+6.斗鱼妹纸爬虫
