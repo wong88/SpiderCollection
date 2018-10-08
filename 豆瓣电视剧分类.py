@@ -26,8 +26,9 @@ class Douban:
             response_str = parse_url(self.url, self.headers)
             response_dict, total = self.parse_content(response_str)
             self.download(response_dict)
-            print("第1页爬完")
+            print("第1页爬完..")
             i = 18
+
             while i < total:
                 self.get_url(classify, i)
                 response_str = parse_url(self.url, self.headers)
