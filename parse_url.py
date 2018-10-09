@@ -3,6 +3,7 @@ from retrying import retry
 
 @retry(stop_max_attempt_number = 3)
 def _parse_url(url, headers = None):
+    print('*'*100)
     session = requests.session()
     response = session.get(url, headers = headers, timeout = 3)
     assert response.status_code == 200

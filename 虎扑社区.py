@@ -12,19 +12,16 @@ class Hupu:
 
     def parse_response(self, response):
         selector = etree.HTML(response)
-        rule = '//div [2]/ul/li/a/@href'
-        news_url_list = selector.xpath(rule)
-        rule = '//div [2]/ul/li/a/div/div/h3/text()'
-        title_list = selector.xpath(rule)
-        rule = '//div [2]/ul/li/a/div/div/div/div/text()'
-        auther_list = selector.xpath(rule)
-        return news_url_list, title_list, auther_list
+        rule = '//div [2]/ul/li/a/@href|//div [2]/ul/li/a/div/div/h3/text()|//div [2]/ul/li/a/div/div/div/div/text()'
+        content_list = selector.xpath(rule)
+
+        return content_list
 
     def run(self):
         response = parse_url(self.url, self.headers)
-        news_url_list, title_list, auther_list = self.parse_response(response)
-        for i in range(0,len(news_url_list)):
-            print(news_url_list[i],title_list[i])
+        content_list = self.parse_response(response)
+        for i in range(0,len(content_list)):
+            print(content_list[i])
 
 
 if __name__ == '__main__':

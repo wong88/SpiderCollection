@@ -16,6 +16,15 @@ class Douban:
         self.url = 'https://m.douban.com/rexxar/api/v2/subject_collection/filter_tv_' + classify + '_hot/items?os=android&start=' + str(
             i) + '&count=18&loc_id=108288'
 
+    def parse_content(self, response_str):
+        response_dict = json.loads(response_str)
+        total = response_dict['total']
+        return response_dict, total
+
+    def download(self, response_dict):
+        with open('data/douban.txt', 'a', encoding='utf-8') as f:
+            json.dump(response_dict, f, ensure_ascii=False, indent=2)
+
     def run(self):
         classify_list, original_list = get_classify(self.classify_url, self.headers)
         print(classify_list)
@@ -37,16 +46,6 @@ class Douban:
                 i += 18
                 j = i / 18
                 print("第%d页爬完" % j)
-
-    def parse_content(self, response_str):
-        response_dict = json.loads(response_str)
-        total = response_dict['total']
-        return response_dict, total
-
-    def download(self, response_dict):
-        with open('data/douban.txt', 'a', encoding='utf-8') as f:
-            json.dump(response_dict, f, ensure_ascii=False,indent=2)
-
 
 
 if __name__ == '__main__':
