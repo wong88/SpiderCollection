@@ -2,3 +2,4 @@
 *.txt
 *.xml
 __pycache__/
+data/
