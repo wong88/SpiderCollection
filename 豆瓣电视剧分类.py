@@ -44,8 +44,9 @@ class Douban:
         return response_dict, total
 
     def download(self, response_dict):
-        with open('douban.tet', 'a', encoding='utf-8') as f:
-            json.dump(response_dict, f, ensure_ascii=False, indent=2)
+        with open('data/douban.txt', 'a', encoding='utf-8') as f:
+            json.dump(response_dict, f, ensure_ascii=False,indent=2)
+
 
 
 if __name__ == '__main__':

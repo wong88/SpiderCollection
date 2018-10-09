@@ -27,6 +27,7 @@ def html_parser(html):
     selector = etree.HTML(html)
     # 电影名称
     title = selector.xpath('//div [@class="hd"]/a/span[1]/text()')
+    print(title)
     # 电影相关信息
     bodys = re.findall(r'<p class="">\s+(.*)<br>\s+(.*)', html)
     # for i in bodys:
