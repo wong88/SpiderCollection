@@ -22,11 +22,12 @@ class TouTiao:
         return response.content.decode()
 
     def parse_response(self, response):
+        print(response)
         response = json.loads(response)
         return response
 
     def save_response(self, response):
-        with open('data/toutiao.txt', 'a')as f:
+        with open('data/toutiao.txt', 'a',encoding="utf-8")as f:
             json.dump(response, f, ensure_ascii=False, indent=2)
 
     def run(self):
