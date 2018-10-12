@@ -18,52 +18,52 @@ class TouTiao:
     def get_url(self):
         for i in range(10):
             start_time = '%d' % time.time()
-            time.sleep(0.1)
-            end_time = '%d' % time.time()
+            end_time = '%d'%(time.time()+1)
             url = self.url.format(start_time, end_time)
             self.url_queue.put(url)
+
 
     def get_response(self):
         while True:
             url = self.url_queue.get()
+            print(url)
             response = requests.get(url, headers=self.headers)
-            if response.status_code == "200":
-                self.html_queue.put(response.content.decode())
-                self.url_queue.task_done()
-
+            self.html_queue.put(response.content.decode())
+            self.url_queue.task_done()
+            print(4)
     def parse_response(self):
         while True:
             response = self.html_queue.get()
             parse_responses = json.loads(response)
-            print(type(parse_responses))
             self.content_list_queue.put(parse_responses)
             self.html_queue.task_done()
 
     def save_response(self):
         while True:
             parse_responses = self.content_list_queue.get()
+            print(1)
             with open('data/toutiao.txt', 'a')as f:
                 json.dump(parse_responses, f, ensure_ascii=False, indent=2)
+            print(2)
             self.content_list_queue.task_done()
 
     def run(self):
         threading_list = []
         # 获取url
         t_url = threading.Thread(target=self.get_url)
-        threading_list.append(t_url)
+        threading_list.insert(0,t_url)
         # 发起请求获取响应
         t_get = threading.Thread(target=self.get_response)
-        threading_list.append(t_get)
+        threading_list.insert(1,t_get)
         # 处理响应获取我们想要的数据
         t_parse = threading.Thread(target=self.parse_response)
-        threading_list.append(t_parse)
+        threading_list.insert(2,t_parse)
         # 保存数据
         t_save = threading.Thread(target=self.save_response)
-        threading_list.append(t_save)
+        threading_list.insert(3,t_save)
         for t in threading_list:
             t.setDaemon(True)
             t.start()
-
         for q in [self.url_queue, self.html_queue, self.content_list_queue]:
             q.join()
 
