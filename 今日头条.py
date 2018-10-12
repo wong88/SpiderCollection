@@ -1,4 +1,6 @@
 import time
+from queue import Queue
+import threading
 import requests
 import json
 
@@ -9,36 +11,61 @@ class TouTiao:
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
         }
+        self.url_queue = Queue()
+        self.html_queue = Queue()
+        self.content_list_queue = Queue()
 
     def get_url(self):
-        start_time = '%d' % time.time()
-        time.sleep(0.1)
-        end_time = '%d' % time.time()
-        url = self.url.format(start_time, end_time)
-        return url
+        for i in range(10):
+            start_time = '%d' % time.time()
+            time.sleep(0.1)
+            end_time = '%d' % time.time()
+            url = self.url.format(start_time, end_time)
+            self.url_queue.put(url)
 
-    def get_response(self, url):
-        response = requests.get(url, headers=self.headers)
-        return response.content.decode()
+    def get_response(self):
+        while True:
+            url = self.url_queue.get()
+            response = requests.get(url, headers=self.headers)
+            if response.status_code == "200":
+                self.html_queue.put(response.content.decode())
+                self.url_queue.task_done()
 
-    def parse_response(self, response):
-        print(response)
-        response = json.loads(response)
-        return response
+    def parse_response(self):
+        while True:
+            response = self.html_queue.get()
+            parse_responses = json.loads(response)
+            print(type(parse_responses))
+            self.content_list_queue.put(parse_responses)
+            self.html_queue.task_done()
 
-    def save_response(self, response):
-        with open('data/toutiao.txt', 'a',encoding="utf-8")as f:
-            json.dump(response, f, ensure_ascii=False, indent=2)
+    def save_response(self):
+        while True:
+            parse_responses = self.content_list_queue.get()
+            with open('data/toutiao.txt', 'a')as f:
+                json.dump(parse_responses, f, ensure_ascii=False, indent=2)
+            self.content_list_queue.task_done()
 
     def run(self):
+        threading_list = []
         # 获取url
-        url = self.get_url()
+        t_url = threading.Thread(target=self.get_url)
+        threading_list.append(t_url)
         # 发起请求获取响应
-        response = self.get_response(url)
+        t_get = threading.Thread(target=self.get_response)
+        threading_list.append(t_get)
         # 处理响应获取我们想要的数据
-        self.parse_response(response)
+        t_parse = threading.Thread(target=self.parse_response)
+        threading_list.append(t_parse)
         # 保存数据
-        self.save_response(response)
+        t_save = threading.Thread(target=self.save_response)
+        threading_list.append(t_save)
+        for t in threading_list:
+            t.setDaemon(True)
+            t.start()
+
+        for q in [self.url_queue, self.html_queue, self.content_list_queue]:
+            q.join()
 
 
 if __name__ == '__main__':
