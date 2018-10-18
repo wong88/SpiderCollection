@@ -7,11 +7,20 @@
 from pymongo import MongoClient
 
 client = MongoClient()
-collection = client["tencent"]["hr"]
 
 
 class RecruitmentPipeline(object):
     def process_item(self, item, spider):
-        # print(item)
-        # collection.insert_one(dict(item))
-        return item
+        if spider.name == 'Tencent':
+            collection = client["tencent"]["hr"]
+            print('tencent:%s'%dict(item))
+            collection.insert_one(dict(item))
+        elif spider.name == 'ali':
+            collection = client["ali"]["hr"]
+            # print(item['pageIndex'])
+            print('ali:%s'%dict(item))
+            collection.insert_one(dict(item))
+        elif spider.name =='bytedance':
+            collection = client['bytedance']['hr']
+            print('bytedance:%s'%dict(item))
+            collection.insert_one(dict(item))
