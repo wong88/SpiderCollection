@@ -7,7 +7,7 @@ import json
 
 class TouTiao:
     def __init__(self):
-        self.url = 'https://m.toutiao.com/list/?tag=__all__&ac=wap&count=20&format=json_raw&as=A1351B5B6EA96A1&cp=5BBED9C6AAD18E1&min_behot_time={}&_signature=rUb9LgAA9wYHab2uyxfCI61G.T&i={}'
+        self.url = 'https://m.toutiao.com/list/?tag=__all__&ac=wap&count=20&as=A1351B5B6EA96A1&cp=5BBED9C6AAD18E1&min_behot_time={}&_signature=rUb9LgAA9wYHab2uyxfCI61G.T&i={}'
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
         }

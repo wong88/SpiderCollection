@@ -16,5 +16,14 @@ class RecruitmentItem(scrapy.Item):
     num = scrapy.Field()    # 人数
     location = scrapy.Field()   # 地址
     time = scrapy.Field()   # 发布时间
-    responsibility = scrapy.Field()
-    require = scrapy.Field()
+    responsibility = scrapy.Field()     # 工作职责
+    require = scrapy.Field()    # 工作要求
+class aliItem(scrapy.Item):
+    name = scrapy.Field()
+    secondCategory = scrapy.Field()
+    workLocation = scrapy.Field()
+    recruitNumber = scrapy.Field()
+    gmtModified = scrapy.Field()
+    description = scrapy.Field()
+    requirement = scrapy.Field()
+    href = scrapy.Field()

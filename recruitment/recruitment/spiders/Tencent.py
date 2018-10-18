@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from urllib import parse
 
 import scrapy
 from ..items import RecruitmentItem
@@ -21,9 +20,9 @@ class TencentSpider(scrapy.Spider):
             items['num'] = tr.xpath(".//td[3]/text()").extract_first()
             items['location'] = tr.xpath(".//td[4]/text()").extract_first()
             items['time'] = tr.xpath(".//td[5]/text()").extract_first()
-            # print(parse.urljoin(response.url, items['href']))
+            detail_url= "https: // hr.tencent.com" + items["href"]
             yield scrapy.Request(
-                parse.urljoin(response.url, items['href']),
+                detail_url,
                 callback=self.parse_detail,
                 meta={"items": items}
             )
