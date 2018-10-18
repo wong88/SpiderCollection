@@ -10,7 +10,7 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'toutiao'
-LOG_LEVEL = "WARNING"
+# LOG_LEVEL = "WARNING"
 SPIDER_MODULES = ['toutiao.spiders']
 NEWSPIDER_MODULE = 'toutiao.spiders'
 

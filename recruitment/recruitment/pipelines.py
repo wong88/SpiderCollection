@@ -13,5 +13,5 @@ collection = client["tencent"]["hr"]
 class RecruitmentPipeline(object):
     def process_item(self, item, spider):
         # print(item)
-        collection.insert_one(dict(item))
+        # collection.insert_one(dict(item))
         return item
