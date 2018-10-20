@@ -79,3 +79,12 @@ class BaiDu(scrapy.Item):
     recruitNum = scrapy.Field()
     workContent = scrapy.Field()
     serviceCondition = scrapy.Field()
+
+class DiDi(scrapy.Item):
+    jobName = scrapy.Field()
+    refreshTime = scrapy.Field()
+    workArea = scrapy.Field()
+    deptName = scrapy.Field()
+    recruitNum = scrapy.Field()
+    jobDesc = scrapy.Field()
+    qualification = scrapy.Field()

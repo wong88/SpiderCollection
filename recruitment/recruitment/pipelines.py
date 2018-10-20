@@ -15,27 +15,38 @@ class RecruitmentPipeline(object):
             collection = client["tencent"]["hr"]
             print('tencent:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == 'ali':
             collection = client["ali"]["hr"]
             print('ali:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == 'bytedance':
             collection = client['bytedance']['hr']
             print('bytedance:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == "JD":
             collection = client["JD"]["hr"]
             print('JD:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == "HuaWei":
             collection = client['HuaWei']['hr']
             print('HuaWei:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == "XiaoMi":
             collection = client['XiaoMi']['hr']
             print('XiaoMi:%s' % dict(item))
             collection.insert_one(dict(item))
+
         elif spider.name == "BaiDu":
             collection = client['BaiDu']['hr']
             print('BaiDu:%s' % dict(item))
             collection.insert_one(dict(item))
+
+        elif spider.name == "DiDi":
+            # collection = client['DiDi']['hr']
+            print('DiDi:%s' % dict(item))
+            # collection.insert_one(dict(item))
