@@ -17,7 +17,6 @@ class RecruitmentPipeline(object):
             collection.insert_one(dict(item))
         elif spider.name == 'ali':
             collection = client["ali"]["hr"]
-            # print(item['pageIndex'])
             print('ali:%s'%dict(item))
             collection.insert_one(dict(item))
         elif spider.name =='bytedance':
@@ -25,7 +24,10 @@ class RecruitmentPipeline(object):
             print('bytedance:%s'%dict(item))
             collection.insert_one(dict(item))
         elif spider.name =="JD":
-            # collection = client["JD"]["hr"]
-            # print(item['pageIndex'])
+            collection = client["JD"]["hr"]
             print('JD:%s' % dict(item))
-            # collection.insert_one(dict(item))
+            collection.insert_one(dict(item))
+        elif spider.name =="HuaWei":
+            collection = client['HuaWei']['hr']
+            print('HuaWei:%s' % dict(item))
+            collection.insert_one(dict(item))

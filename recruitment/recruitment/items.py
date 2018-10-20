@@ -50,3 +50,11 @@ class JD(scrapy.Item):
     formatPublishTime = scrapy.Field()
     workContent = scrapy.Field()
     qualification = scrapy.Field()
+
+class HuaWei(scrapy.Item):
+    jobname = scrapy.Field()
+    jobArea = scrapy.Field()
+    jobFamilyName = scrapy.Field()
+    deptName = scrapy.Field()
+    mainBusiness = scrapy.Field()
+    jobRequire = scrapy.Field()
