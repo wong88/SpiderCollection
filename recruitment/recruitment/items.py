@@ -58,3 +58,10 @@ class HuaWei(scrapy.Item):
     deptName = scrapy.Field()
     mainBusiness = scrapy.Field()
     jobRequire = scrapy.Field()
+
+class XiaoMi(scrapy.Item):
+    name = scrapy.Field()
+    title = scrapy.Field()
+    publishedAt = scrapy.Field()
+    id = scrapy.Field()
+    jobDescription = scrapy.Field()

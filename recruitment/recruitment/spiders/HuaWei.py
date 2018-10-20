@@ -25,9 +25,9 @@ class HuaweiSpider(scrapy.Spider):
             items['mainBusiness'] = re.sub(r'\n','',temp['mainBusiness'])
             jobId = temp['jobId']
             now_time = time.time()*1000
-            detile_url = 'http://career.huawei.com/socRecruitment/services/portal/portalpub/getJobDetail?jobId={}&_={}'.format(jobId,now_time)
+            detil_url = 'http://career.huawei.com/socRecruitment/services/portal/portalpub/getJobDetail?jobId={}&_={}'.format(jobId,now_time)
             yield scrapy.Request(
-                detile_url,
+                detil_url,
                 meta={
                     "items":items
                 },

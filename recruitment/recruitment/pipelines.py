@@ -31,3 +31,7 @@ class RecruitmentPipeline(object):
             collection = client['HuaWei']['hr']
             print('HuaWei:%s' % dict(item))
             collection.insert_one(dict(item))
+        elif spider.name =="XiaoMi":
+            # collection = client['XiaoMi']['hr']
+            print('XiaoMi:%s' % dict(item))
+            # collection.insert_one(dict(item))
