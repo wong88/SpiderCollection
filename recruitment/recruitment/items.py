@@ -42,3 +42,11 @@ class bytedance(scrapy.Item):
     create_time = scrapy.Field()
     description = scrapy.Field()
     requirement = scrapy.Field()
+
+class JD(scrapy.Item):
+    positionName = scrapy.Field()
+    jobType = scrapy.Field()
+    workCity = scrapy.Field()
+    formatPublishTime = scrapy.Field()
+    workContent = scrapy.Field()
+    qualification = scrapy.Field()

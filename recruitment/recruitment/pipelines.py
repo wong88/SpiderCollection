@@ -24,3 +24,8 @@ class RecruitmentPipeline(object):
             collection = client['bytedance']['hr']
             print('bytedance:%s'%dict(item))
             collection.insert_one(dict(item))
+        elif spider.name =="JD":
+            # collection = client["JD"]["hr"]
+            # print(item['pageIndex'])
+            print('JD:%s' % dict(item))
+            # collection.insert_one(dict(item))
