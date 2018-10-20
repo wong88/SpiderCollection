@@ -26,7 +26,7 @@ class XiaomiSpider(scrapy.Spider):
             items['publishedAt'] = jobs['publishedAt']
             items['name'] = jobs['department']['name']
             items['id'] = jobs['id']
-            detil_url = 'http://job.hr.xiaomi.com/api/apply/job/{}?orgId=xiaomi&siteId=287'
+            detil_url = 'http://job.hr.xiaomi.com/api/apply/job/{}?orgId=xiaomi&siteId=287'.format(items['id'])
             yield   scrapy.Request(
                 detil_url,
                 meta={
@@ -57,7 +57,7 @@ class XiaomiSpider(scrapy.Spider):
             items['publishedAt'] = jobs['publishedAt']
             items['name'] = jobs['department']['name']
             items['id'] = jobs['id']
-            detil_url = 'http://job.hr.xiaomi.com/api/apply/job/{}?orgId=xiaomi&siteId=287'
+            detil_url = 'http://job.hr.xiaomi.com/api/apply/job/{}?orgId=xiaomi&siteId=287'.format(items['id'])
             yield   scrapy.Request(
                 detil_url,
                 meta={
