@@ -13,25 +13,29 @@ class RecruitmentPipeline(object):
     def process_item(self, item, spider):
         if spider.name == 'Tencent':
             collection = client["tencent"]["hr"]
-            print('tencent:%s'%dict(item))
+            print('tencent:%s' % dict(item))
             collection.insert_one(dict(item))
         elif spider.name == 'ali':
             collection = client["ali"]["hr"]
-            print('ali:%s'%dict(item))
+            print('ali:%s' % dict(item))
             collection.insert_one(dict(item))
-        elif spider.name =='bytedance':
+        elif spider.name == 'bytedance':
             collection = client['bytedance']['hr']
-            print('bytedance:%s'%dict(item))
+            print('bytedance:%s' % dict(item))
             collection.insert_one(dict(item))
-        elif spider.name =="JD":
+        elif spider.name == "JD":
             collection = client["JD"]["hr"]
             print('JD:%s' % dict(item))
             collection.insert_one(dict(item))
-        elif spider.name =="HuaWei":
+        elif spider.name == "HuaWei":
             collection = client['HuaWei']['hr']
             print('HuaWei:%s' % dict(item))
             collection.insert_one(dict(item))
-        elif spider.name =="XiaoMi":
-            # collection = client['XiaoMi']['hr']
+        elif spider.name == "XiaoMi":
+            collection = client['XiaoMi']['hr']
             print('XiaoMi:%s' % dict(item))
-            # collection.insert_one(dict(item))
+            collection.insert_one(dict(item))
+        elif spider.name == "BaiDu":
+            collection = client['BaiDu']['hr']
+            print('BaiDu:%s' % dict(item))
+            collection.insert_one(dict(item))

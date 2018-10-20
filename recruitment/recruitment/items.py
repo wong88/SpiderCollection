@@ -35,6 +35,7 @@ class aliItem(scrapy.Item):
     education = scrapy.Field()
     pageIndex = scrapy.Field()
 
+
 class bytedance(scrapy.Item):
     name = scrapy.Field()
     summary = scrapy.Field()
@@ -42,6 +43,7 @@ class bytedance(scrapy.Item):
     create_time = scrapy.Field()
     description = scrapy.Field()
     requirement = scrapy.Field()
+
 
 class JD(scrapy.Item):
     positionName = scrapy.Field()
@@ -51,6 +53,7 @@ class JD(scrapy.Item):
     workContent = scrapy.Field()
     qualification = scrapy.Field()
 
+
 class HuaWei(scrapy.Item):
     jobname = scrapy.Field()
     jobArea = scrapy.Field()
@@ -59,9 +62,20 @@ class HuaWei(scrapy.Item):
     mainBusiness = scrapy.Field()
     jobRequire = scrapy.Field()
 
+
 class XiaoMi(scrapy.Item):
     name = scrapy.Field()
     title = scrapy.Field()
     publishedAt = scrapy.Field()
     id = scrapy.Field()
     jobDescription = scrapy.Field()
+
+
+class BaiDu(scrapy.Item):
+    name = scrapy.Field()
+    publishDate = scrapy.Field()
+    postType = scrapy.Field()
+    workPlace = scrapy.Field()
+    recruitNum = scrapy.Field()
+    workContent = scrapy.Field()
+    serviceCondition = scrapy.Field()
