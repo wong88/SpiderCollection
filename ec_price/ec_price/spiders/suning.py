@@ -14,5 +14,7 @@ class SuningSpider(scrapy.Spider):
             print(url)
             yield self.make_requests_from_url(url)
     def parse(self, response):
+        # TODO 价格获取
+        pass
         # url = parameter,sugGoodsCode,sugGoodsCode,sugGoodsCode,cityCode,districtCode,shopCode,shopCode,shopCode,shopCode
 """ https://icps.suning.com/icps-web/getVarnishAllPrice014/000000000690128134,000000000690128156,000000000690128135,000000000690128157_027_0270101_0000000000,0000000000,0000000000,0000000000_1_getClusterPrice.vhtm?callback=getClusterPrice"""
