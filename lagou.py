@@ -42,11 +42,11 @@ class Lagou:
                 positionAdvantage = result['positionAdvantage']
                 salary = result['salary']
                 workYear = result['workYear']
-                zw = '公司名字:%s 公司大小:%s 发布时间:%s  地址:%s 工资:%s 职位诱惑:%s,公司福利:%s 工作年限:%s \n' % (
-                    companyName, companySize, createTime, district, salary, companyLabel, positionAdvantage, workYear)
-                f.write(zw)
-                companyLabel = ''
-                print('第%s页下载完毕' % i)
+                # zw = '公司名字:%s 公司大小:%s 发布时间:%s  地址:%s 工资:%s 职位诱惑:%s,公司福利:%s 工作年限:%s \n' % (
+                #     companyName, companySize, createTime, district, salary, companyLabel, positionAdvantage, workYear)
+                # f.write(zw)
+                # companyLabel = ''
+                # print('第%s页下载完毕' % i)
 
 
 if __name__ == '__main__':
