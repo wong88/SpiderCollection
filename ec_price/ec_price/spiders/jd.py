@@ -6,13 +6,13 @@ class JdSpider(scrapy.Spider):
     name = 'jd'
     allowed_domains = ['search.jd.com']
     start_urls = ['https://search.jd.com/Search?keyword=macbook pro 15 2018 16 256']
-    def __init__(self):
-        super()
-        self.page = 1
-        self.browser = webdriver.Chrome()
+    # def __init__(self):
+    #     super()
+    #     self.page = 1
+    #     self.browser = webdriver.Chrome()
     def parse(self, response):
         url_title = 'https:'
-        page = str(self.page+1)
+        # page = str(self.page+1)
         sku_list = []
         li_list = response.xpath("//ul[@class = 'gl-warp clearfix']/li")
         for li in li_list:
