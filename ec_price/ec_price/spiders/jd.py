@@ -26,4 +26,4 @@ class JdSpider(scrapy.Spider):
             items['shop_url'] = url_title+li.xpath(".//div[@class='p-shop']//a/@href").extract_first()
             sku = li.xpath("./@data-sku").extract_first()
             sku_list.append(sku)
-
+        # TODO 完善下一页功能
