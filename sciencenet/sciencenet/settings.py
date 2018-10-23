@@ -13,6 +13,7 @@ BOT_NAME = 'sciencenet'
 
 SPIDER_MODULES = ['sciencenet.spiders']
 NEWSPIDER_MODULE = 'sciencenet.spiders'
+LOG_LEVEL = "WARNING"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +65,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'sciencenet.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'sciencenet.pipelines.SciencenetPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

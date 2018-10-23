@@ -3,7 +3,7 @@ import re
 from urllib.parse import quote
 from scrapy import Request
 import scrapy
-import requests
+from lxml import etree
 from copy import deepcopy
 
 from ..items import SciencenetItem
@@ -42,18 +42,39 @@ class SciencenetspiderSpider(scrapy.Spider):
             li_list = div.xpath("./div[@class='box_r']/ul/li")
             for li in li_list:
                 items['thirdly_name'] = li.xpath("./a/text()").extract_first()
-                items['thirdly_url'] = li.xpath("./a/@href").extract_first()
-                catid = re.findall('&catid=(.*)',items['thirdly_url'])[0]
-                user_url = "http://blog.sciencenet.cn/blog.php?mod=member&type={}&realmmedium={}&realm={}&catid={}".format(quote(items['thirdly_name'], encoding="gbk"),quote(items['second_name'], encoding="gbk"),first,catid)
-                # print(type(items['thirdly_url']))
-                print('user_url%s'%user_url)
-                # print(items['thirdly_url'])
-                # yield scrapy.Request(
-                #     usrs_url,
-                #     meta={
-                #         'items':deepcopy(items)
-                #     },
-                #     callback=self.parse_usrs_list
-                # )
+                thirdly_url = li.xpath("./a/@href").extract_first()
+                catid = re.findall('&catid=(.*)',thirdly_url)[0]
+                items['thirdly_url'] = "http://blog.sciencenet.cn/blog.php?mod=member&type={}&realmmedium={}&realm={}&catid={}".format(quote(items['thirdly_name'], encoding="gbk"),quote(items['second_name'], encoding="gbk"),first,catid)
+                yield scrapy.Request(
+                    items['thirdly_url'],
+                    meta={
+                        'items':deepcopy(items)
+                    },
+                    callback=self.parse_usrs_list
+                )
     def parse_usrs_list(self,response):
-        pass
+        items = response.meta['items']
+        html = response.body.decode("gbk")
+        response = etree.HTML(html)
+        div_list = response.xpath("//div[@class='potbox']")
+        for div in div_list:
+            # 'http://blog.sciencenet.cn/' +
+            items['user_url'] = 'http://blog.sciencenet.cn/'+div.xpath("./div[@class = 'pot']/a/@href")[0]
+            items['user_name'] = div.xpath("p[@class = 'potfont']/a/text()")[0]
+            yield scrapy.Request(
+                items['user_url'],
+                meta={
+                    'items':deepcopy(items)
+                },
+                callback=self.parse_detil
+
+            )
+    def parse_detil(self,response):
+        items = response.meta['items']
+        html = response.body.decode("gbk")
+        response = etree.HTML(html)
+        items['orientation'] = response.xpath("//li[@class='ul_diy']//text()")[0]   if len(response.xpath("//li[@class='ul_diy']//text()"))>0 else []
+        items['Visits'] = response.xpath("//strong[@class='xi1']/text()")[0]    if len(response.xpath("//strong[@class='xi1']/text()"))>0 else []
+        items['count'] = response.xpath("//li[text()='博文: ']/a/text()")   if len(response.xpath("//li[text()='博文: ']/a/text()"))>0 else []
+        items['vitality'] = response.xpath("//li[text()='活跃度: ']/a/text()")  if len(response.xpath("//li[text()='活跃度: ']/a/text()"))>0 else []
+        yield items
