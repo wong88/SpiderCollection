@@ -51,18 +51,28 @@ class GanJi:
     def perse_response(self, response):
         html = etree.HTML(response)
         div_list = html.xpath("//div[@class = 'f-list js-tips-list']/div")[1:]
-        print(len(div_list))
-        next_url = html.xpath("//a[@class='next']/span/text()")
-        print(next_url)
+        for div in div_list:
+            items = {}
+            items['photo'] = div.xpath(".//div[@class='img-wrap']/img/@href")[0]
+            items['home_name'] = div.xpath(".//div[@class='img-wrap']/img/@title")[0]
+            items['home_information'] = div.xpath(".//dd[@class = 'dd-item size']/span")
+            items['home_address'] = div.xpath(".//span[@class='area']/a/text()")
+            items['home_pay'] = div.xpath(".//dd[@class= 'dd-item feature']/span/text()")
+            self.save(items)
+        self.url = html.xpath("//a[@class='next']/span/text()")
+        return next_url
+    def save(self,items):
+        # 保存数据
+        with open('data/ganji.txt','w')as f:
+            f.write(items)
 
     def run(self):
-        self.get_proxies()
-        # 发送请求,获取响应
-        response = self.get_response()
-        # 解析响应
-        self.perse_response(response)
-        # 保存数据
-
+        while True:
+            self.get_proxies()
+            # 发送请求,获取响应
+            response = self.get_response()
+            # 解析响应
+            self.perse_response(response)
 
 if __name__ == '__main__':
     ganji = GanJi()

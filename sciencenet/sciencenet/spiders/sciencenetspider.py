@@ -77,4 +77,4 @@ class SciencenetspiderSpider(scrapy.Spider):
         items['Visits'] = response.xpath("//strong[@class='xi1']/text()")[0]    if len(response.xpath("//strong[@class='xi1']/text()"))>0 else []
         items['count'] = response.xpath("//li[text()='博文: ']/a/text()")   if len(response.xpath("//li[text()='博文: ']/a/text()"))>0 else []
         items['vitality'] = response.xpath("//li[text()='活跃度: ']/a/text()")  if len(response.xpath("//li[text()='活跃度: ']/a/text()"))>0 else []
-        yield items
+        yield
