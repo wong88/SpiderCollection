@@ -10,5 +10,6 @@ import scrapy
 
 class SciencenetItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    thirdly_name = scrapy.Field()
+    second_name =scrapy.Field()
+    thirdly_url = scrapy.Field()
