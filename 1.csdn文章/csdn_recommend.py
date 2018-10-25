@@ -16,13 +16,6 @@ class Csdn:
             'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
         }
 
-    def run(self):
-        html = self.parse_url(self.url, self.headers)
-        self.selector_html(html)
-        # 启动获取ajax的函数
-        bk_title, bk_category, bk_nickname, bk_views, bk_createdat = self.download()
-        self.reserve(bk_title, bk_category, bk_nickname, bk_views, bk_createdat)
-
     def parse_url(self, url, headers):
         """获取入口网页信息"""
         # 获取推荐内容
@@ -106,6 +99,13 @@ class Csdn:
         cs.close()
         # 关闭数据库对象
         conn.close()
+
+    def run(self):
+        html = self.parse_url(self.url, self.headers)
+        self.selector_html(html)
+        # 启动获取ajax的函数
+        bk_title, bk_category, bk_nickname, bk_views, bk_createdat = self.download()
+        self.reserve(bk_title, bk_category, bk_nickname, bk_views, bk_createdat)
 
 
 if __name__ == '__main__':
