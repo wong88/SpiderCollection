@@ -7,25 +7,32 @@ nndl = dict()
 
 def main(url, headers):
     q = 1
+    # 建立数据库连接
     conn = connect(host='', port=3306, database='', user='', password='', charset='utf8')
+    # 获取游标对象
     db = conn.cursor()
+    # 　发送请求
     html = requests.get(url=url, headers=headers).content.decode('utf-8')
+    #  获取ip
     temp = re.findall(r'<td>(\d+\.\d+\.\d+\.\d+)</td>\s+<td>(\d+)</td>', html)
-    temp2 = re.findall(r' <td class="country">高匿</td>\s+<td>(HTTP(S)?)</td>',html)
+    # 获取port
+    temp2 = re.findall(r' <td class="country">高匿</td>\s+<td>(HTTP(S)?)</td>', html)
+    # sql语句
     sql = 'insert into account values(0,%s,%s,%s)'
     print(temp2)
-    for i,j in zip(temp,temp2):
-        db.execute(sql, (i[0], i[1],j[0]))
+    # 遍历
+    for i, j in zip(temp, temp2):
+        # 　向数据库中插入数据
+        db.execute(sql, (i[0], i[1], j[0]))
         # print(j)
+        # 提交数据
         conn.commit()
         print('写入%d条数据成功' % q)
         q += 1
+    # 关闭数据库对象
     db.close()
+    # 关闭连接
     conn.close()
-    # print(temp)
-    # for i in temp:
-    # sql
-    # db.execute()
 
 
 if __name__ == '__main__':

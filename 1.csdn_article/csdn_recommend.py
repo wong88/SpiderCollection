@@ -8,7 +8,9 @@ from pymysql import *
 
 class Csdn:
     def __init__(self):
+        # 构建起始url
         self.url = 'https://www.csdn.net/'
+        # 构建请求头
         self.headers = {
             'Cookie': 'dc_session_id=10_1534255781965.690329; uuid_tt_dd=1867337173782432197_20180814; TY_SESSION_ID=26d2661f-c8d1-453b-8cd1-d7f4092a7a5a; dc_tos=pdgfct; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=1534255786; Hm_lpvt_6bcd52f51e9b3dce32bec4a3997715ac=1534255805; ADHOC_MEMBERSHIP_CLIENT_ID1.0=13b03884-df19-d6d6-638d-9a5330fde5f4',
             'Host': 'www.csdn.net',
@@ -23,6 +25,7 @@ class Csdn:
         return html
 
     def selector_html(self, html):
+        """解析响应"""
         # 解析html
         selector = etree.HTML(html)
         # 通过规则匹配出url
@@ -101,6 +104,7 @@ class Csdn:
         conn.close()
 
     def run(self):
+        """控制引擎"""
         html = self.parse_url(self.url, self.headers)
         self.selector_html(html)
         # 启动获取ajax的函数

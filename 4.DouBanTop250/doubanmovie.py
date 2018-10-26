@@ -5,17 +5,24 @@ import re
 
 def url_manager():
     """url管理"""
+    # 初始地址
     url_new = "https://movie.douban.com/top250"
+    # 判断是否重复
     if url_new_list:
+        # 重复删除
         url_next = url_new_list.pop()
+        # 构造下一页url地址
         url_new = "https://movie.douban.com/top250%s" % url_next
+        #将地址加入老地址列表
         url_old_list.add(url_new)
         print(url_new)
+    # 返回新地址
     return url_new
 
 
 def html_download(url):
     """HTML下载"""
+    # 发起请求,获取响应
     html = requests.get(url).content.decode('utf-8')
     return html
 
@@ -48,21 +55,27 @@ def html_parser(html):
 
 
 def dataoutput(movie):
-    """解析数据存储"""
+    """数据存储"""
+
     with open("data/豆瓣电影top250.txt", 'a')as f:
         f.write(movie)
 
 
 def crawl():
-    """调用爬虫"""
+    """爬虫引擎"""
     # 爬虫入口
     url = "https://movie.douban.com/top250"
+    # 发起请求获取响应
     html = html_download(url)
+    #　得到电影和下一页数据
     movie,url_next = html_parser(html)
+    # 保存数据
     dataoutput(movie)
+    # 判断是否时最后一页
     if url_next == None:
         dataoutput(movie)
         print("下载完毕")
+    # 发送下一页请求
     while url_next:
         url_new_list.add(url_next)
         url = url_manager()
