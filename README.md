@@ -2,7 +2,7 @@
 爬虫合集  
 1.csdn_article
 2.lagou_position_information
-3.西刺代理ip  
+3.xici_proxy
 4.豆瓣电影top250  
 5.链家网房屋信息  
 6.斗鱼妹纸  
