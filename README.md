@@ -1,7 +1,7 @@
 # My-Python-爬虫
 爬虫合集  
-1.csdn article  
-2.拉勾网职位信息  
+1.csdn_article
+2.lagou_position_information
 3.西刺代理ip  
 4.豆瓣电影top250  
 5.链家网房屋信息  
