@@ -5,7 +5,7 @@
 3.xici_proxy
 4.douban_movie_top250
 5.Lianjia_house_information
-6.斗鱼妹纸  
+6.DouYu_girl
 7.compensation  
 8.36kr  
 9.豆瓣电视剧模块  
