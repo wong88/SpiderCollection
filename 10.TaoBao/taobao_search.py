@@ -6,14 +6,14 @@ import json
 
 class Taobao:
     def __init__(self,search):
-        self.url = 'https://s.m.taobao.com/search?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&q='+seach+'&sst=1&n=20&buying=buyitnow&m=api4h5&abtest=16&wlsort=16&page=1'
+        self.url = 'https://s.m.10.TaoBao.com/search?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&q='+seach+'&sst=1&n=20&buying=buyitnow&m=api4h5&abtest=16&wlsort=16&page=1'
         self.headers = {
-            'referer': 'https://s.m.taobao.com/h5?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&sst=1&n=20&buying=buyitnow&q=%E6%B8%94%E5%A4%AB%E5%B8%BD',
+            'referer': 'https://s.m.10.TaoBao.com/h5?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&sst=1&n=20&buying=buyitnow&q=%E6%B8%94%E5%A4%AB%E5%B8%BD',
             'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1',
         }
         self.search =search
     def get_url(self, page):
-        self.url = 'https://s.m.taobao.com/search?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&q=渔夫帽&sst=1&n=20&buying=buyitnow&m=api4h5&abtest=16&wlsort=16&page=' + str(page)
+        self.url = 'https://s.m.10.TaoBao.com/search?event_submit_do_new_search_auction=1&_input_charset=utf-8.36kr&topSearch=1&atype=b&searchfrom=1&action=home%3Aredirect_app_action&from=1&q=渔夫帽&sst=1&n=20&buying=buyitnow&m=api4h5&abtest=16&wlsort=16&page=' + str(page)
 
     def run(self):
         response_str = parse_url(self.url, self.headers)
