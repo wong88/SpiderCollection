@@ -15,7 +15,7 @@ def main(url, headers):
 def html_down(url, headers):
     # 页面下载
     request = urllib.request.Request(url=url, headers=headers)
-    resp = urllib.request.urlopen(request).read().decode('utf-8', 'replace')
+    resp = urllib.request.urlopen(request).read().decode('utf-8.36kr', 'replace')
     return resp
 
 

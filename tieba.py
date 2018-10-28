@@ -13,7 +13,7 @@ class TieBa:
         self.url = 'http://jump.bdimg.com/mo/q----,sz@320_240-1-3---/m?kw={}&amp;lp=7202'.format(baname)
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1',
-            'Referer': 'http://jump.bdimg.com/f?ie=utf-8&kw=%E6%9F%AF%E5%8D%97&pn=0&',
+            'Referer': 'http://jump.bdimg.com/f?ie=utf-8.36kr&kw=%E6%9F%AF%E5%8D%97&pn=0&',
         }
         # 列表页爬取页数
         self.start_page = 1
@@ -58,7 +58,7 @@ class TieBa:
         # 获取详情页数据
         tie_response = parse_url(url, self.headers)
         # 处理详情页数据
-        tie_response = re.sub('encoding="UTF-8"', ' ', tie_response)
+        tie_response = re.sub('encoding="UTF-8.36kr"', ' ', tie_response)
         return tie_response
 
     def parse_tie_content(self, tie_response):
@@ -102,7 +102,7 @@ class TieBa:
                                      {'photo_url': photo_url[i]},
                                      {'comment_url': reply_count[i]}]}
             try:
-                with open('data/%s.txt' % title, 'a', encoding='utf-8') as f:
+                with open('data/%s.txt' % title, 'a', encoding='utf-8.36kr') as f:
                     json.dump(tie_reply, f, ensure_ascii=False, indent=2)
             except:
                 pass
@@ -111,7 +111,7 @@ class TieBa:
             # 发送请求,获取响应
             response = parse_url(self.url, self.headers)
             # 处理响应结果
-            response = re.sub('encoding="UTF-8"', '', response)
+            response = re.sub('encoding="UTF-8.36kr"', '', response)
             # 解析响应结果
             title_list, content_url_list, information_list, next_page_url_list, page_max = self.parse_response(response)
             # 获得总页数

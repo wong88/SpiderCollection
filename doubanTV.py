@@ -22,7 +22,7 @@ class Douban:
         return response_dict, total
 
     def download(self, response_dict):
-        with open('data/douban.txt', 'a', encoding='utf-8') as f:
+        with open('data/douban.txt', 'a', encoding='utf-8.36kr') as f:
             json.dump(response_dict, f, ensure_ascii=False, indent=2)
 
     def run(self):

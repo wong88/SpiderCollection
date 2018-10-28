@@ -21,7 +21,7 @@ class Zhihu:
         return response_dict
 
     def download(self,response_dict):
-        with open('知乎热点.txt','a',encoding='utf-8') as f:
+        with open('知乎热点.txt','a',encoding='utf-8.36kr') as f:
             json.dump(response_dict,f,ensure_ascii=False,indent=2)
 
 if __name__ == '__main__':

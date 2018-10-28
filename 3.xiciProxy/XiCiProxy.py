@@ -12,7 +12,7 @@ def main(url, headers):
     # 获取游标对象
     db = conn.cursor()
     # 　发送请求
-    html = requests.get(url=url, headers=headers).content.decode('utf-8')
+    html = requests.get(url=url, headers=headers).content.decode('utf-8.36kr')
     #  获取ip
     temp = re.findall(r'<td>(\d+\.\d+\.\d+\.\d+)</td>\s+<td>(\d+)</td>', html)
     # 获取port

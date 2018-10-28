@@ -4,7 +4,7 @@ from lxml import etree
 
 def down(url, headers):
     # html爬取
-    html = requests.get(url=url, headers=headers).content.decode('utf-8')
+    html = requests.get(url=url, headers=headers).content.decode('utf-8.36kr')
     resolve(html)
 
 

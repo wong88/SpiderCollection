@@ -12,14 +12,14 @@ def download(heands, url):
         bf = BeautifulSoup(temp, 'lxml')
         temp = bf.findAll('ul', class_="resblock-list-wrapper")
         # name = bf.findAll('a', class_='name')
-        with open("./数据/武汉江夏区房价(前30页).txt", "a", encoding='utf-8') as f:
+        with open("./数据/武汉江夏区房价(前30页).txt", "a", encoding='utf-8.36kr') as f:
             f.write(str(temp))
         i += 1
 
 
 def Resolve():
     '''解析数据'''
-    with open('./数据/武汉江夏区房价(前30页).txt', 'r', encoding='utf-8') as f:
+    with open('./数据/武汉江夏区房价(前30页).txt', 'r', encoding='utf-8.36kr') as f:
         content = f.read()
 
     bf = BeautifulSoup(content, 'lxml')
@@ -46,7 +46,7 @@ def Resolve():
     sale_status = jx('span', 'sale-status', 'status_list')
     price = jx('span', 'number', 'number_list')
     j = 0
-    with open('./数据/江夏区房屋信息.txt', 'a', encoding='utf-8') as f:
+    with open('./数据/江夏区房屋信息.txt', 'a', encoding='utf-8.36kr') as f:
         while j < len(price):
             content += '楼盘：%s  房屋属性：%s   开售时间：%s    价格：%s' % (name[j], resblock_type[j], sale_status[j], price[j])
             j += 1

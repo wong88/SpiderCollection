@@ -20,7 +20,7 @@ class Csdn:
     def parse_url(self, url, headers):
         """获取入口网页信息"""
         # 获取推荐内容
-        html = requests.get(url=url, headers=headers).content.decode('utf-8')
+        html = requests.get(url=url, headers=headers).content.decode('utf-8.36kr')
         return html
 
     def selector_html(self, html):
@@ -51,7 +51,7 @@ class Csdn:
                 'Upgrade-Insecure-Requests': '1'
             }
             # 获取ajax
-            ajks_url = requests.get(url=url, headers=headers).content.decode('utf-8')
+            ajks_url = requests.get(url=url, headers=headers).content.decode('utf-8.36kr')
             # 将获取到的ajax转化为python里的格式
             html_url = json.loads(ajks_url)
             # 切换到articles目录

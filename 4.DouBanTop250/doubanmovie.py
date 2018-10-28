@@ -23,7 +23,7 @@ def url_manager():
 def html_download(url):
     """HTML下载"""
     # 发起请求,获取响应
-    html = requests.get(url).content.decode('utf-8')
+    html = requests.get(url).content.decode('utf-8.36kr')
     return html
 
 
