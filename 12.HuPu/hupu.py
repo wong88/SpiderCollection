@@ -14,13 +14,13 @@ class Hupu:
         selector = etree.HTML(response)
         rule = '//div [2]/ul/li/a/@href|//div [2]/ul/li/a/div/div/h3/text()|//div [2]/ul/li/a/div/div/div/div/text()'
         content_list = selector.xpath(rule)
-
         return content_list
 
     def run(self):
+        # parse_url是封装好requests的一个函数,传入url和headers等信息可以获取响应
         response = parse_url(self.url, self.headers)
         content_list = self.parse_response(response)
-        for i in range(0,len(content_list)):
+        for i in range(0, len(content_list)):
             print(content_list[i])
 
 

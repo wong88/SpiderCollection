@@ -1,5 +1,5 @@
 from parse_url import parse_url
-from pprint import pprint
+
 import re
 import json
 
@@ -26,7 +26,7 @@ class Taobao:
         return response_dict, total_page
 
     def run(self):
-        # 构造请求,获取响应
+        # parse_url是封装好requests的一个函数,传入url和headers等信息可以获取响应
         response_str = parse_url(self.url, self.headers)
         #获取数据,翻页url
         response_dict, total_page = self.parse_content(response_str)

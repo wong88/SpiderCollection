@@ -38,9 +38,10 @@ class TianYa:
 
     def run(self):
         self.get_url()
+        # parse_url是封装好requests的一个函数,传入url和headers等信息可以获取响应
         response = parse_url(self.url, self.headers)
         content_url_list, title_list, subheading_list, auther_list, classify_list = self.parse_response(response)
-
+        print(content_url_list, title_list, subheading_list, auther_list, classify_list)
 
 if __name__ == '__main__':
     tianya = TianYa()
