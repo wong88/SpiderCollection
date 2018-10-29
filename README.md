@@ -17,7 +17,7 @@
 15.TouTiao
 16.DouYuLiveInformation
 17.4399Game
-18.JianShu
+18.KuaiProxyPoll
 19.快代理  
 20.腾讯社招  
 21.阿里社招  
