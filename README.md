@@ -17,20 +17,20 @@
 15.TouTiao
 16.DouYuLiveInformation
 17.4399Game
-18.KuaiProxyPoll
-19.快代理  
-20.腾讯社招  
-21.阿里社招  
-22.字节跳动社招  
-23.赶集网租房  
-24.字节跳动社招  
-25.华为社招  
-26.京东社招  
-27.小米社招  
-28.滴滴社招  
-29.bilibili登陆  
-30.JD商品  
-31.科学网  
-32.苏宁  
+18.JianShu
+19.KuaiProxyPoll
+20.TencentRecrument(recruitment)
+21.ALiRecrument(recruitment)
+22.ByteDanceRecrument(recruitment)
+23.Ganji
+24.SuNing(ec_price)
+25.HuaWeiRecrument(recruitment)
+26.JDRecrument(recruitment)
+27.XiaoMiRecrument(recruitment)
+28.DiDiRecrument(recruitment)
+29.bilibiliLogin
+30.JD(ec_price)
+31.sciencenet
+32.TieBaOnekeySignIn
 
 
