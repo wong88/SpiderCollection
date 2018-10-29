@@ -11,6 +11,7 @@ class TouTiao:
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
         }
+        # 设置队列
         self.url_queue = Queue()
         self.html_queue = Queue()
         self.content_list_queue = Queue()
