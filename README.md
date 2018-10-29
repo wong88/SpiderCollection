@@ -11,8 +11,8 @@
 9.teleplay  
 10.taobao  
 11.ZhiHu_Hot
-12.虎扑步行者社区  
-13.天涯论坛  
+12.HuPu
+13.TianYa
 14.贴吧  
 15.今日头条  
 16.斗鱼  
