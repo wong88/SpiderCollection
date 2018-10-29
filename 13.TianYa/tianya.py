@@ -1,7 +1,8 @@
 import time
+
 from lxml import etree
 
-from parse_url import parse_url
+from utils.parse_url import parse_url
 
 '''//li/div[@class="list_bd list_bd_3 list_link"]/@data-link|' \
                '//li/div[@class="list_bd list_bd_3 list_link"]/h3/text()|' \

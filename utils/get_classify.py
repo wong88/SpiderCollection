@@ -1,7 +1,8 @@
 import re
+
 from lxml import etree
 
-from parse_url import parse_url
+from utils.parse_url import parse_url
 
 
 def get_classify(classify_url, headers):

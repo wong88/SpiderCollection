@@ -1,7 +1,7 @@
-from parse_url import parse_url
-
-import re
 import json
+import re
+
+from utils.parse_url import parse_url
 
 
 class Taobao:

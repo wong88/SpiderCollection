@@ -1,10 +1,9 @@
-from lxml import etree
-import sys
 import json
 import re
-from queue import Queue
 
-from parse_url import parse_url
+from lxml import etree
+
+from utils.parse_url import parse_url
 
 
 class TieBa:

@@ -1,6 +1,7 @@
-from parse_url import parse_url
 import json
-from get_classify import get_classify
+
+from utils.get_classify import get_classify
+from utils.parse_url import parse_url
 
 
 class Douban:

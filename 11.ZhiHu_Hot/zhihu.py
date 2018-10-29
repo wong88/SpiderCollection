@@ -1,6 +1,6 @@
 import json
 
-from parse_url import parse_url
+from utils.parse_url import parse_url
 
 
 class Zhihu:
