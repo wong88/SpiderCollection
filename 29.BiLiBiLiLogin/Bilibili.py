@@ -213,8 +213,8 @@ class LoginBilibili(object):
 
 
 def main():
-    username = '********'
-    password = '********'
+    username = '**********'
+    password = '**********'
     crack_bilibili = LoginBilibili(username, password)
     crack_bilibili.run_spider()
 
