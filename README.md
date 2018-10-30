@@ -1,5 +1,5 @@
 # My-Python-Spider  
-SpiderCompilations  
+SpiderCollection  
 1.CSDN_Article  
 2.LagoupPositionInformation  
 3.XiCiProxy  
