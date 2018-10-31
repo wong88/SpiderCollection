@@ -32,7 +32,9 @@ class Taobao:
         response_dict, total_page = self.parse_content(response_str)
         # 下载数据
         self.download(response_dict)
+
         print('第1页爬取完毕')
+
         page = 1
         # 根据总页数翻页
         while page < int(total_page):
