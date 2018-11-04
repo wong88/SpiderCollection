@@ -3,4 +3,5 @@
 *.xml
 __pycache__/
 data/
+
 scrapy-redis
