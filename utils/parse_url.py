@@ -2,6 +2,7 @@ import requests
 from retrying import retry
 
 
+
 @retry(stop_max_attempt_number=3)
 def _parse_url(url, headers=None):
     print('*' * 10)
